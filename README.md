@@ -7,7 +7,7 @@ Examples are provided here for each as Jupyter notebooks. To use them, download 
 
 `pyedflib` seems to be better, we'll probably need to use it to read the files, convert them to flat files, and then we can read them into spark or anywhere. 
 
-Some files may be corrupted. For example, I wasn't able to read `brux1.edf`. I suggest we drop any corrupted files. Files are much larger after reading though (the file I read went from 484 Mb to 17 Gb) so we'll have plenty data left after removing anything that is problematic.
+Some files may be corrupted. For example, I wasn't able to read `brux1.edf`. I suggest we drop any corrupted files. Files are much larger after reading (the file I read went from 484 Mb to 17 Gb) so we'll have plenty data left after removing anything that is problematic.
 
 ### .edf.st
 
