@@ -5,8 +5,8 @@ import glob, os, pickle, re, sys
     
 datapath = '.' 
 savetopath = 'csv/' 
-#datapath = '/home/bchamberlain/bigdataproj/'
-#savetopath = '/scratch/midway2/bigdataproj/csv/'
+datapath = '/home/bchamberlain/bigdataproj/'
+savetopath = '/scratch/midway2/bigdataproj/csv/'
 
 os.chdir(datapath)
 
