@@ -6,7 +6,7 @@ import glob, os, pickle, re, sys, multiprocessing, random, platform
 from joblib import Parallel, delayed
 
 if platform.system() == 'Linux':
-    savetopath = '/scratch/midway2/bigdataproj/csv/'
+    savetopath = '/scratch/midway2/bchamberlain/csv/'
     if not os. path. isdir(savetopath): os.mkdir(savetopath)
     os.chdir('/home/bchamberlain/bigdataproj/')
 else:
