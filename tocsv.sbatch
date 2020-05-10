@@ -4,9 +4,9 @@
 #SBATCH --error=edf2csv.err
 #SBATCH --time=03:00:00
 #SBATCH --partition=broadwl
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=12
-#SBATCH --mem-per-cpu=2000
+#SBATCH --nodes=10
+#SBATCH --ntasks-per-node=6
+#SBATCH --mem-per-cpu=16000
 
 module load Anaconda3
 python tocsv.py
