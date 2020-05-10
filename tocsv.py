@@ -2,15 +2,14 @@
 import pandas as pd
 import numpy as np
 from pyedflib import highlevel # https://github.com/holgern/pyedflib
-import glob, os, pickle, re, sys, multiprocessing, random
+import glob, os, pickle, re, sys, multiprocessing, random, platform
 from joblib import Parallel, delayed
 
-ismidway = True
-
-if ismidway:
+if platform.system() == 'Linux':
     savetopath = '/scratch/midway2/bigdataproj/csv/'
+    if not os. path. isdir(savetopath): os.mkdir(savetopath)
     os.chdir('/home/bchamberlain/bigdataproj/')
-else :
+else:
     os.chdir('.')
     savetopath = 'csv/' 
 
