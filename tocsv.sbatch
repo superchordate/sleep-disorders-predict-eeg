@@ -5,7 +5,7 @@
 #SBATCH --time=03:00:00
 #SBATCH --partition=broadwl
 #SBATCH --nodes=10
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks-per-node=1
 #SBATCH --mem-per-cpu=16000
 
 module load Anaconda3
