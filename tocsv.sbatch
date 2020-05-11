@@ -2,9 +2,9 @@
 #SBATCH --job-name=edf2csv
 #SBATCH --output=log/edf2csv.out
 #SBATCH --error=log/edf2csv.err
-#SBATCH --time=03:00:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=broadwl
-#SBATCH --ntasks=20
+#SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=16000
 
 module load Anaconda3
