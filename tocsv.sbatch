@@ -5,7 +5,7 @@
 #SBATCH --time=01:00:00
 #SBATCH --partition=broadwl
 #SBATCH --ntasks=10
-#SBATCH --mem-per-cpu=64000
+#SBATCH --mem-per-cpu=52000
 
 module load Anaconda3
 python tocsv.py
