@@ -9,7 +9,8 @@ if platform.system() == 'Linux':
     savetopath = '/scratch/midway2/bchamberlain/bigdata-2020-project/csv/'
     if not os. path. isdir(savetopath): os.mkdir(savetopath)
     os.chdir('/scratch/midway2/bchamberlain/bigdata-2020-project/')
-    resource.setrlimit(resource.RLIMIT_AS, (14000))
+    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    resource.setrlimit(resource.RLIMIT_AS, (14000, hard))
 else:
     os.chdir('.')
     savetopath = 'csv/' 
