@@ -2,7 +2,8 @@
 import pandas as pd
 import numpy as np
 from pyedflib import highlevel # https://github.com/holgern/pyedflib
-import glob, os, pickle, re, sys, multiprocessing, random, platform, resource
+import glob, os, pickle, re, sys, multiprocessing, random, platform
+ #import resource
 from joblib import Parallel, delayed
 
 if platform.system() == 'Linux':
@@ -23,6 +24,9 @@ dofiles = [i for i in hasfiles if i not in donefiles]
 #dofiles = np.random.choice(dofiles, size=10, replace=False)
 if len(dofiles) >= 10:
     dofiles = np.random.choice(dofiles, size=10, replace=False)
+
+print("doing: ")
+print(dofiles)
 
 # function to convert and EDF file to multiple CVS.
 def edf2csv(fileid):
