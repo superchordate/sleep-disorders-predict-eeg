@@ -21,9 +21,9 @@ hasfiles = [re.search('^([^.]+)[.]', i).group(1) for i in os.listdir('edf') if r
 donefiles = np.unique([re.search('^(done|err)-(.+$)', i).group(2) for i in [i for i in os.listdir(savetopath) if re.search('^(done|err)-(.+$)', i)]])
 dofiles = [i for i in hasfiles if i not in donefiles]
 
-if len(dofiles) > 20:
-    #dofiles = np.random.choice(dofiles, size=10, replace=False)
-    dofiles = dofiles[0:19]
+#if len(dofiles) > 20:
+#    #dofiles = np.random.choice(dofiles, size=10, replace=False)
+#    dofiles = dofiles[0:19]
 
 print("doing: ")
 print(dofiles)
