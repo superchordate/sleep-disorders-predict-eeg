@@ -21,8 +21,8 @@ donefiles = np.unique([re.search('^(done|err)-(.+$)', i).group(2) for i in [i fo
 dofiles = [i for i in hasfiles if i not in donefiles]
 
 #dofiles = np.random.choice(dofiles, size=10, replace=False)
-if len(dofiles) >= 20:
-    dofiles = np.random.choice(dofiles, size=20, replace=False)
+if len(dofiles) >= 10:
+    dofiles = np.random.choice(dofiles, size=10, replace=False)
 
 # function to convert and EDF file to multiple CVS.
 def edf2csv(fileid):
