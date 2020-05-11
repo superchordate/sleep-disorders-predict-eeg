@@ -24,3 +24,12 @@ I'm not sure what these are. If you have time, please investigate this.
 * [Google Drive](https://drive.google.com/drive/u/0/folders/18ekfirfShLYpxpLoBYhQiKe25c-XYSJO)
 
 To load the data to HDFS, I used: `wget -r -N -c -np https://physionet.org/files/capslpdb/1.0.0/ | zcat | hdfs dfs -put -/user/$USER/data/sleep`
+
+    tr -d '\\r' 'convert-to-csv.sbatch' 'convert-to-csv.sbatch'
+
+## Batching
+
+broadwl nodes (187) have 28 cores each and 64Gb RAM
+
+Docs at https://rcc.uchicago.edu/docs/using-midway/index.html#batch-jobs
+
