@@ -6,9 +6,9 @@ import glob, os, pickle, re, sys, multiprocessing, random, platform, resource
 from joblib import Parallel, delayed
 
 if platform.system() == 'Linux':
-    savetopath = '/scratch/midway2/bchamberlain/bigdata-2020-project/csv/'
+    savetopath = '/project2/msca/bchamberlain/bigdata-2020-project/csv/'
     if not os. path. isdir(savetopath): os.mkdir(savetopath)
-    os.chdir('/scratch/midway2/bchamberlain/bigdata-2020-project/')
+    os.chdir('/project2/msca/bchamberlain/bigdata-2020-project/')
     #soft, hard = resource.getrlimit(resource.RLIMIT_AS)
     #resource.setrlimit(resource.RLIMIT_AS, (14000, hard))
 else:
@@ -20,7 +20,8 @@ hasfiles = [re.search('^([^.]+)[.]', i).group(1) for i in os.listdir('edf') if r
 donefiles = np.unique([re.search('^(done|err)-(.+$)', i).group(2) for i in [i for i in os.listdir(savetopath) if re.search('^(done|err)-(.+$)', i)]])
 dofiles = [i for i in hasfiles if i not in donefiles]
 
-dofiles = np.random.choice(dofiles, size=10, replace=False)
+#dofiles = np.random.choice(dofiles, size=10, replace=False)
+dofiles = np.random.choice(dofiles, size=20, replace=False)
 
 # function to convert and EDF file to multiple CVS.
 def edf2csv(fileid):

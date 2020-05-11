@@ -2,7 +2,7 @@ cd /scratch/midway2/bchamberlain/bigdata-2020-project/
 git pull
 rm -R log
 mkdir log
-sbatch tocsv.sbatch
+sbatch tocsv.sbatch -N1 -n1
 
 # aliases we can use.
 alias err='cat /scratch/midway2/bchamberlain/bigdata-2020-project/log/edf2csv.err'  
