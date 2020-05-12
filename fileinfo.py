@@ -5,9 +5,9 @@ from joblib import Parallel, delayed
 ncores = multiprocessing.cpu_count()
     
 if platform.system() == 'Linux':
-    savetopath = '/scratch/midway2/bchamberlain/bigdata-2020-project/csv/'
+    savetopath = '/project2/msca/bchamberlain/bigdata-2020-project/csv/'
     if not os. path. isdir(savetopath): os.mkdir(savetopath)
-    os.chdir('/scratch/midway2/bchamberlain/bigdata-2020-project/')
+    os.chdir('/project2/msca/bchamberlain/bigdata-2020-project/')
     usecores = ncores - 2
 else:
     os.chdir('.')
