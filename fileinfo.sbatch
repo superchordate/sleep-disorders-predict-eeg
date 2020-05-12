@@ -4,9 +4,8 @@
 #SBATCH --error=log/fileinfo.err
 #SBATCH --time=03:00:00
 #SBATCH --partition=broadwl
-#SBATCH --nodes=10
-#SBATCH --ntasks-per-node=6
-#SBATCH --mem-per-cpu=6000
+#SBATCH --ntasks=10
+#SBATCH --mem-per-cpu=58000
 
 module load Anaconda3
 python fileinfo.py
