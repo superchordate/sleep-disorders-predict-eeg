@@ -7,5 +7,5 @@
 #SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=58000
 
-module load Anaconda3
+module load Anaconda3/5.3.0
 python fileinfo.py
