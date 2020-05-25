@@ -10,4 +10,5 @@
 
 # the environment variable SLURM_ARRAY_TASK_ID contains
 # the index corresponding to the current job step
+module load Anaconda3/5.3.0
 python fileinfo/edfinfo.py $SLURM_ARRAY_TASK_ID
