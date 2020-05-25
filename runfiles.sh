@@ -26,3 +26,16 @@ sbatch fileinfo/fileinfo.sbatch -N1 -n1 -exclusive
 watch squeue -u bchamberlain
 '
 run
+
+# edfinfo 
+alias err='cat /project2/msca/bchamberlain/bigdata-2020-project/log/edfinfo.err'  
+alias out='cat /project2/msca/bchamberlain/bigdata-2020-project/edfinfo.out'
+alias run='
+cd /project2/msca/bchamberlain/bigdata-2020-project/
+git pull
+rm -R log
+mkdir log
+sbatch fileinfo/edfinfo.sbatch
+watch squeue -u bchamberlain
+'
+run
