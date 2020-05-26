@@ -5,6 +5,7 @@ from pyedflib import highlevel # https://github.com/holgern/pyedflib
 import os, re, sys
 
 taskid = int(sys.argv[1])
+print(sys.argv)
 
 edfpath = '/project2/msca/bchamberlain/bigdata-2020-project/edf/'
 outpath = '/project2/msca/bchamberlain/bigdata-2020-project/edfinfo/'
