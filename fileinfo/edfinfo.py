@@ -5,7 +5,6 @@ from pyedflib import highlevel # https://github.com/holgern/pyedflib
 import os, re, sys
 
 taskid = int(sys.argv[1])
-print(sys.argv)
 
 edfpath = '/project2/msca/bchamberlain/bigdata-2020-project/edf/'
 outpath = '/project2/msca/bchamberlain/bigdata-2020-project/edfinfo/'
@@ -21,7 +20,7 @@ if(len(okfiles) > taskid + 1):
     try:
 
         with open(outpath + dofile + "-started","w") as file:
-            file.write("task" + taskid + " \n")
+            file.write("task-" + str(taskid) + " \n")
 
         filepath = edfpath + dofile + '.edf'
         signals, signal_headers, header = highlevel.read_edf(filepath)
