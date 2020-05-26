@@ -7,6 +7,7 @@
 #SBATCH --time=03:00:00
 #SBATCH --partition=broadwl
 #SBATCH --ntasks=1
+#SBATCH --mem-per-cpu=58000
 
 # the environment variable SLURM_ARRAY_TASK_ID contains
 # the index corresponding to the current job step
