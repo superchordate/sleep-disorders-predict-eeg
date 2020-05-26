@@ -13,13 +13,13 @@ hasfiles = [re.search('^([^.]+)[.]', i).group(1) for i in os.listdir(edfpath) if
 startedfiles = np.unique([re.search('^(.+)-started$', i).group(1) for i in [i for i in os.listdir(outpath) if re.search('^(.+)-started$', i)]])
 okfiles = [i for i in hasfiles if i not in startedfiles]
 
-if(len(okfiles) > 0):
+if(len(okfiles) > taskid + 1):
 
-    dofile = okfiles[0]
+    dofile = okfiles[taskid]
 
     try:
 
-        with open(outpath + dofile + "-started" + dofile,"w") as file:
+        with open(outpath + dofile + "-started","w") as file:
             file.write("task" + taskid + " \n")
 
         filepath = edfpath + dofile + '.edf'
