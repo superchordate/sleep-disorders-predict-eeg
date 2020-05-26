@@ -3,7 +3,7 @@
 #SBATCH --job-name=edfinfo
 #SBATCH --output=log/edfinfo.out
 #SBATCH --error=log/edfinfo.err
-#SBATCH --array=0-10
+#SBATCH --array=0-24
 #SBATCH --time=03:00:00
 #SBATCH --partition=broadwl
 #SBATCH --ntasks=1
