@@ -4,7 +4,7 @@ import numpy as np
 from pyedflib import highlevel # https://github.com/holgern/pyedflib
 import os, re, sys
 
-taskid = sys.argv[0]
+taskid = int(sys.argv[0])
 
 edfpath = '/project2/msca/bchamberlain/bigdata-2020-project/edf/'
 outpath = '/project2/msca/bchamberlain/bigdata-2020-project/edfinfo/'
