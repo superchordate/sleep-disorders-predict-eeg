@@ -2,5 +2,7 @@ data/
 edf/
 csv/
 log/
+out/
+.ipynb_checkpoints/
 doneids
 *.pdf
