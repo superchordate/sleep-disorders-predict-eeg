@@ -3,7 +3,7 @@
 require(easyr)
 begin()
 
-t = read.any('../edfinfo.csv')
+t = read.any('../out/edfinfo.csv')
 
 reqs = c(
   `C4-A1` = 128,
@@ -34,5 +34,21 @@ for(i in names(reqs)){
 length(okfiles)
 table(gsub('[0-9]', '', okfiles))
 
-w(data.frame(label = names(reqs), sample_rate = reqs), '../out/selected-signals')
+
+# write tables to be used later.
+reqs =  data.frame(label = names(reqs), choose_sample_rate = reqs, stringsAsFactors = FALSE)
+
+t %>% 
+  select(file, label, sample_rate, rowcount) %>%
+  arrange(label, file) %>%
+  filter(file %in% okfiles) %>% 
+  inner_join(reqs, by = 'label') %>%
+  mutate(adjrowcount = choose_sample_rate/sample_rate * rowcount) %>%
+  group_by(label) %>%
+  mutate(groupminrowcount = min(adjrowcount)) %>%
+  ungroup() %>%
+  select(label, choose_sample_rate, groupminrowcount) %>% distinct() %>%
+  w('../out/minrowcount')
+
+w(reqs, '../out/selected-signals')
 w(data.frame(file = okfiles), '../out/selected-files')
