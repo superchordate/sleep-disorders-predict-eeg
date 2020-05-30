@@ -48,7 +48,6 @@ t %>%
   mutate(groupminrowcount = min(adjrowcount)) %>%
   ungroup() %>%
   select(label, choose_sample_rate, groupminrowcount) %>% distinct() %>%
-  w('../out/minrowcount')
+  w('../out/selected-signals')
 
-w(reqs, '../out/selected-signals')
 w(data.frame(file = okfiles), '../out/selected-files')
