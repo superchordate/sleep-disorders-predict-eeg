@@ -3,6 +3,7 @@ edf/
 csv/
 log/
 out/
+train/
 .ipynb_checkpoints/
 doneids
 *.pdf
