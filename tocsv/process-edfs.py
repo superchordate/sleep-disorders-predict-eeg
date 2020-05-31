@@ -17,7 +17,7 @@ else:
     savetopath = '../out/'
     edfpath = '../edf/'
     # just a few to test.
-    dofiles = dofiles[0:5]
+    #dofiles = dofiles[0:5]
 
 usecores = multiprocessing.cpu_count() - 1
 if not os. path.isdir(savetopath): os.mkdir(savetopath)
@@ -48,4 +48,4 @@ def getsignals(file):
         pq.write_table(pa.Table.from_pandas(df), '../out/' + file + '-' + str(isample_rate) + '.parquet')
     
 
-reads = Parallel(n_jobs = ncores)(delayed(getsignals)(i) for i in dofiles)
+reads = Parallel(n_jobs = usecores)(delayed(getsignals)(i) for i in dofiles)
