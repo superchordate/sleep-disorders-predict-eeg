@@ -32,10 +32,11 @@ class EEGDataset(Dataset):
 
         return x, y
 
+dataset = EEGDataset('train', 'plm')
 dataloader = DataLoader(
     # I've moved all the 128 files into the train/ folder, but you can use a different folder if you like.
     # the folder should contain all the parquet files.
-    EEGDataset('train', 'plm'), batch_size = 50, shuffle = True, num_workers = 0
+    dataset, batch_size = len(dataset), shuffle = True, num_workers = 0
 )
 
 #for local_batch, local_labels in dataloader:
