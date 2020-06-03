@@ -11,6 +11,7 @@ Data loaders for the model training to use.
 **pytorch\c-model.py**
 Model training including defining neural network layers.
 * Uses validation data to check generalization, bias/variance.
+* *Idea: Try different layers, including other CNN layers or RNN or LSTM*
 
 **pytorch\d-‌holdout-test-rollup.py**
 Roll up predictions on splits into a prediction for observations in the holdout set.
