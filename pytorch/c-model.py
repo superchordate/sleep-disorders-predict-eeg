@@ -115,7 +115,7 @@ for epoch in range(max_epochs + 1):
         if any(~np.isin(predictions, [0,1])): raise Exception('bad prediction')
         
         print(
-            'true: %s of %s; test accuracy: %s' % (
+            'true: %s of %s; validation accuracy: %s' % (
             sum(labels), len(labels),
             round(np.mean(labels == predictions),2)
         ))
