@@ -4,6 +4,8 @@ csv/
 log/
 out/
 train/
+splits/
+test/
 .ipynb_checkpoints/
 doneids
 *.pdf
