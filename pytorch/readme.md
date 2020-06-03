@@ -2,8 +2,8 @@
 Converts EDF files into parquet files that can be read into the model.
 * Selects observations to be in train, validation, and holdout sets.
 * Creates data splits. Turn this feature off by splitting to 1 dataset.
-* Idea: split into distinct segments instead of randomly sampling the beginning of each split.
 * Keeps splits of observations together so a split from holdout doesn't get used in training, for example.
+* *Idea: split into distinct segments instead of randomly sampling the beginning of each split.*
 
 **pytorch\b-data-loader.py**
 Data loaders for the model training to use.
