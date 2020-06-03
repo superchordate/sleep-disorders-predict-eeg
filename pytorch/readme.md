@@ -1,7 +1,7 @@
 **pytorch\a-process-edf-testtrain.py**
 Converts EDF files into parquet files that can be read into the model.
 * Selects observations to be in train, validation, and holdout sets.
-* Creates data splits. Turn this feature off by splitting to 1 dataset.
+* Creates data splits.
 * Keeps splits of observations together so a split from holdout doesn't get used in training, for example.
 * *Idea: split into distinct segments instead of randomly sampling the beginning of each split.*
 
