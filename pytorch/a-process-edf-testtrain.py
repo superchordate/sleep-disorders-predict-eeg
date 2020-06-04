@@ -2,10 +2,17 @@
 import pandas as pd
 import numpy as np
 import glob, os, pickle, re, sys, multiprocessing, random, platform
-from joblib import Parallel, delayed
 import pyarrow as pa
 import pyarrow.parquet as pq
-import pyedflib
+import pyedflib # pip install git+https://github.com/superchordate/pyedflib
+from joblib import Parallel, delayed
+from glob import glob
+              
+# options
+docuts = False
+cutsize = 100 * 1000
+cutcount = 20
+doparquet = True # False will do CSV
 
 dofiles = pd.read_csv('../out/selected-files.csv').file.values
 
@@ -44,7 +51,18 @@ dosignals = pd.read_csv(savetopath + 'selected-signals.csv')
 
 # function to convert and EDF file to multiple CVS.
 # file = dofiles[4]
-# file = 'ins1'
+# file = 'ins8'
+
+# clear files.
+if '.\\holdout\\' in glob("./*/"):
+    for i in ['validate', 'holdout', 'train']: 
+        for j in os.listdir(i): os.remove(i + '/' + j)
+    del i, j
+else:
+    os.makedir('holdout')
+    os.makedir('validate')
+    os.makedir('train')
+
 def getsignals(file):
     
     if file in validatefiles:
@@ -72,18 +90,28 @@ def getsignals(file):
 
             everyrow = int(row.sample_rate / row.choose_sample_rate)
             df[row.label] = edf.readSignal(row.freq_index)[0::everyrow][0:row.groupminrowcount]
+        
+        if docuts:
+
+            for i in range(cutcount):
                 
-        # take 50 random cuts length 100000.
-        cutsize = 100 * 1000
-        cutcount = 20
-        for i in range(cutcount):
-            
-            startat = random.randint(0, df.shape[0] - cutsize - 1)
-            cut = df.iloc[startat:(startat+cutsize ), ]
-            if cut.shape[1] != 9:
-                raise Exception('bad size at ' + file)
+                startat = random.randint(0, df.shape[0] - cutsize - 1)
+                cut = df.iloc[startat:(startat+cutsize ), ]
+                if cut.shape[1] != 9:
+                    raise Exception('bad size at ' + file)
+                    
+                if doparquet: 
+                    pq.write_table(pa.Table.from_pandas(cut), '../pytorch/' + traintest + '/' + file + '-' + str(isample_rate) + '-' + str(i) + '.parquet')
+                else:
+                    cut.to_csv('../pytorch/' + traintest + '/' + file + '-' + str(isample_rate) + '-' + str(i) + '.csv', index = False)
+
+        else:
+
+            if doparquet: 
+                pq.write_table(pa.Table.from_pandas(df), '../pytorch/' + traintest + '/' + file + '-' + str(isample_rate) + '.parquet')
+            else: 
+                df.to_csv('../pytorch/' + traintest + '/' + file + '-' + str(isample_rate) + '.csv', index = False)
                 
-            pq.write_table(pa.Table.from_pandas(cut), '../pytorch/splits/' + traintest + '/' + file + '-' + str(isample_rate) + '-' + str(i) + '.parquet')
     
 
 Parallel(n_jobs = usecores)(delayed(getsignals)(i) for i in dofiles)

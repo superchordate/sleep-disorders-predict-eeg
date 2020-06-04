@@ -9,3 +9,5 @@ test/
 .ipynb_checkpoints/
 doneids
 *.pdf
+holdout/
+validate/
